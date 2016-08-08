@@ -1,5 +1,5 @@
 
-// 3DRudderDirectInputDlg.h : fichier d'en-tête
+// 3DRudderDirectInputDlg.h : header file
 //
 
 #pragma once
@@ -13,27 +13,27 @@
 
 
 
-// boîte de dialogue CMy3DRudderDirectInputDlg
+// CMy3DRudderDirectInputDlg dialog
 class CMy3DRudderDirectInputDlg : public CDialogEx
 {
-// Construction
+	// Construction
 public:
-	CMy3DRudderDirectInputDlg(CWnd* pParent = NULL);	// constructeur standard
+	CMy3DRudderDirectInputDlg(CWnd* pParent = NULL);	// standard constructor
 
-// Données de boîte de dialogue
+														// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MY3DRUDDERDIRECTINPUT_DIALOG };
 #endif
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// Prise en charge de DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 
-// Implémentation
+// Implementation
 protected:
 	HICON m_hIcon;
 
-	// Fonctions générées de la table des messages
+	// Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();

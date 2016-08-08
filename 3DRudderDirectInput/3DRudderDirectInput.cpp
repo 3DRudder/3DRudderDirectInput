@@ -1,5 +1,5 @@
 
-// 3DRudderDirectInput.cpp : Définit les comportements de classe pour l'application.
+// 3DRudderDirectInput.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
@@ -18,34 +18,34 @@ BEGIN_MESSAGE_MAP(CMy3DRudderDirectInputApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// construction CMy3DRudderDirectInputApp
+// CMy3DRudderDirectInputApp construction
 
 CMy3DRudderDirectInputApp::CMy3DRudderDirectInputApp()
 {
-	// prend en charge le Gestionnaire de redémarrage
+	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 
-	// TODO: ajoutez ici du code de construction,
-	// Placez toutes les initialisations significatives dans InitInstance
+	// TODO: add construction code here,
+	// Place all significant initialization in InitInstance
 }
 
 
-// Seul et unique objet CMy3DRudderDirectInputApp
+// The one and only CMy3DRudderDirectInputApp object
 
 CMy3DRudderDirectInputApp theApp;
 
 
-// initialisation de CMy3DRudderDirectInputApp
+// CMy3DRudderDirectInputApp initialization
 
 BOOL CMy3DRudderDirectInputApp::InitInstance()
 {
-	// InitCommonControlsEx() est requis sur Windows XP si le manifeste de l'application
-	// spécifie l'utilisation de ComCtl32.dll version 6 ou ultérieure pour activer les
-	// styles visuels.  Dans le cas contraire, la création de fenêtres échouera.
+	// InitCommonControlsEx() is required on Windows XP if an application
+	// manifest specifies use of ComCtl32.dll version 6 or later to enable
+	// visual styles.  Otherwise, any window creation will fail.
 	INITCOMMONCONTROLSEX InitCtrls;
 	InitCtrls.dwSize = sizeof(InitCtrls);
-	// À définir pour inclure toutes les classes de contrôles communs à utiliser
-	// dans votre application.
+	// Set this to include all the common control classes you want to use
+	// in your application.
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
@@ -54,20 +54,20 @@ BOOL CMy3DRudderDirectInputApp::InitInstance()
 
 	AfxEnableControlContainer();
 
-	// Créer le gestionnaire de shell, si la boîte de dialogue contient
-	// des contrôles d'arborescence ou de liste de shell.
+	// Create the shell manager, in case the dialog contains
+	// any shell tree view or shell list view controls.
 	CShellManager *pShellManager = new CShellManager;
 
-	// Active le gestionnaire visuel "natif Windows" pour activer les thèmes dans les contrôles MFC
+	// Activate "Windows Native" visual manager for enabling themes in MFC controls
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));
 
-	// Initialisation standard
-	// Si vous n'utilisez pas ces fonctionnalités et que vous souhaitez réduire la taille
-	// de votre exécutable final, vous devez supprimer ci-dessous
-	// les routines d'initialisation spécifiques dont vous n'avez pas besoin.
-	// Changez la clé de Registre sous laquelle nos paramètres sont enregistrés
-	// TODO: modifiez cette chaîne avec des informations appropriées,
-	// telles que le nom de votre société ou organisation
+	// Standard initialization
+	// If you are not using these features and wish to reduce the size
+	// of your final executable, you should remove from the following
+	// the specific initialization routines you do not need
+	// Change the registry key under which our settings are stored
+	// TODO: You should modify this string to be something appropriate
+	// such as the name of your company or organization
 	SetRegistryKey(_T("Applications locales générées par AppWizard"));
 
 	CMy3DRudderDirectInputDlg dlg;
@@ -75,21 +75,21 @@ BOOL CMy3DRudderDirectInputApp::InitInstance()
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
 	{
-		// TODO: placez ici le code définissant le comportement lorsque la boîte de dialogue est
-		//  fermée avec OK
+		// TODO: Place code here to handle when the dialog is
+		//  dismissed with OK
 	}
 	else if (nResponse == IDCANCEL)
 	{
-		// TODO: placez ici le code définissant le comportement lorsque la boîte de dialogue est
-		//  fermée avec Annuler
+		// TODO: Place code here to handle when the dialog is
+		//  dismissed with Cancel
 	}
 	else if (nResponse == -1)
 	{
-		TRACE(traceAppMsg, 0, "Avertissement : échec de création de la boîte de dialogue, par conséquent, l'application s'arrête de manière inattendue.\n");
-		TRACE(traceAppMsg, 0, "Avertissement : si vous utilisez les contrôles MFC de la boîte de dialogue, vous ne pouvez pas exécuter #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS.\n");
+		TRACE(traceAppMsg, 0, "Warning: dialog creation failed, so application is terminating unexpectedly.\n");
+		TRACE(traceAppMsg, 0, "Warning: if you are using MFC controls on the dialog, you cannot #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS.\n");
 	}
 
-	// Supprimer le gestionnaire de shell créé ci-dessus.
+	// Delete the shell manager created above.
 	if (pShellManager != NULL)
 	{
 		delete pShellManager;
@@ -99,8 +99,8 @@ BOOL CMy3DRudderDirectInputApp::InitInstance()
 	ControlBarCleanUp();
 #endif
 
-	// Lorsque la boîte de dialogue est fermée, retourner FALSE afin de quitter
-	//  l'application, plutôt que de démarrer la pompe de messages de l'application.
+	// Since the dialog has been closed, return FALSE so that we exit the
+	//  application, rather than start the application's message pump.
 	return FALSE;
 }
 

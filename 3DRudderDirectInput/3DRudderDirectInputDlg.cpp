@@ -1,5 +1,5 @@
 
-// 3DRudderDirectInputDlg.cpp : fichier d'implémentation
+// 3DRudderDirectInputDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -17,22 +17,22 @@
 #define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p)=nullptr; } }
 
 
-// boîte de dialogue CAboutDlg utilisée pour la boîte de dialogue 'À propos de' pour votre application
+// CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-// Données de boîte de dialogue
+	// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // Prise en charge de DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
-// Implémentation
+// Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -50,7 +50,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// boîte de dialogue CMy3DRudderDirectInputDlg
+// CMy3DRudderDirectInputDlg dialog
 
 
 
@@ -98,15 +98,15 @@ BEGIN_MESSAGE_MAP(CMy3DRudderDirectInputDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// gestionnaires de messages pour CMy3DRudderDirectInputDlg
+// CMy3DRudderDirectInputDlg message handlers
 
 BOOL CMy3DRudderDirectInputDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// Ajouter l'élément de menu "À propos de..." au menu Système.
+	// Add "About..." menu item to system menu.
 
-	// IDM_ABOUTBOX doit se trouver dans la plage des commandes système.
+	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -124,15 +124,15 @@ BOOL CMy3DRudderDirectInputDlg::OnInitDialog()
 		}
 	}
 
-	// Définir l'icône de cette boîte de dialogue.  L'infrastructure effectue cela automatiquement
-	//  lorsque la fenêtre principale de l'application n'est pas une boîte de dialogue
-	SetIcon(m_hIcon, TRUE);			// Définir une grande icône
-	SetIcon(m_hIcon, FALSE);		// Définir une petite icône
+	// Set the icon for this dialog.  The framework does this automatically
+	//  when the application's main window is not a dialog
+	SetIcon(m_hIcon, TRUE);			// Set big icon
+	SetIcon(m_hIcon, FALSE);		// Set small icon
 	if (FAILED(InitDirectInput()))
 		EndDialog(0);
 	SetTimer (0, 1000 / 30, nullptr );
 
-	return TRUE;  // retourne TRUE, sauf si vous avez défini le focus sur un contrôle
+	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
 void CMy3DRudderDirectInputDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -148,19 +148,19 @@ void CMy3DRudderDirectInputDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Si vous ajoutez un bouton Réduire à votre boîte de dialogue, vous devez utiliser le code ci-dessous
-//  pour dessiner l'icône.  Pour les applications MFC utilisant le modèle Document/Vue,
-//  cela est fait automatiquement par l'infrastructure.
+// If you add a minimize button to your dialog, you will need the code below
+//  to draw the icon.  For MFC applications using the document/view model,
+//  this is automatically done for you by the framework.
 
 void CMy3DRudderDirectInputDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // contexte de périphérique pour la peinture
+		CPaintDC dc(this); // device context for painting
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Centrer l'icône dans le rectangle client
+		// Center icon in client rectangle
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -168,7 +168,7 @@ void CMy3DRudderDirectInputDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// Dessiner l'icône
+		// Draw the icon
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -177,8 +177,8 @@ void CMy3DRudderDirectInputDlg::OnPaint()
 	}
 }
 
-// Le système appelle cette fonction pour obtenir le curseur à afficher lorsque l'utilisateur fait glisser
-//  la fenêtre réduite.
+// The system calls this function to obtain the cursor to display while the user drags
+//  the minimized window.
 HCURSOR CMy3DRudderDirectInputDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -373,15 +373,13 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 	// Display joystick state to dialog
 
 	m_sXAxis.Format(_T("%ld"), js.lX);
-	// 08/08/2016 m_sYAxis.Format(_T("%ld"), js.lY);
 	m_sYAxis.Format(_T("%ld"), (js.lY*(-1)));
 	m_sZAxis.Format(_T("%ld"), js.lZ);
 	m_sZRotation.Format(_T("%ld"), js.lRz);
 
 
 
-	// switch ((js.lRx)>>12)
-	switch ((js.lRx+1)>>12)  // EFR 08/08/2016
+	switch ((js.lRx+1)>>12) 
 	{
 		case 1:
 			m_sStatus = _T("Status : Don't put your Feet !!! Stay still 5s");
@@ -412,13 +410,6 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 
 	m_sSensor1.Format(_T("%ld"),js.lRy & 0xFF);
 	m_sSensor2.Format(_T("%ld"), ( js.lRy >> 8) & 0xFF);
-
-	/* EFR 08/08/2016 c'est l'inversion, on a d'abord les données des sesors 5 et 6
-	m_sSensor3.Format(_T("%ld"), js.rglSlider[0] & 0xFF);
-	m_sSensor4.Format(_T("%ld"), (js.rglSlider[0] >> 8) & 0xFF);
-	m_sSensor5.Format(_T("%ld"), js.rglSlider[1] & 0xFF);
-	m_sSensor6.Format(_T("%ld"), (js.rglSlider[1] >> 8) & 0xFF);
-	*/
 
 	m_sSensor3.Format(_T("%ld"), js.rglSlider[1] & 0xFF);
 	m_sSensor4.Format(_T("%ld"), (js.rglSlider[1] >> 8) & 0xFF);

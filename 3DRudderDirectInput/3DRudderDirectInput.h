@@ -1,18 +1,18 @@
 
-// 3DRudderDirectInput.h : fichier d'en-tête principal pour l'application PROJECT_NAME
+// 3DRudderDirectInput.h : main header file for the PROJECT_NAME application
 //
 
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "incluez 'stdafx.h' avant d'inclure ce fichier pour PCH"
+	#error "include 'stdafx.h' before including this file for PCH"	
 #endif
 
-#include "resource.h"		// symboles principaux
+#include "resource.h"		// main symbols
 
 
-// CMy3DRudderDirectInputApp :
-// Consultez 3DRudderDirectInput.cpp pour l'implémentation de cette classe
+// CMy3DRudderDirectInputApp:
+// See 3DRudderDirectInput.cpp for the implementation of this class
 //
 
 class CMy3DRudderDirectInputApp : public CWinApp
@@ -20,11 +20,11 @@ class CMy3DRudderDirectInputApp : public CWinApp
 public:
 	CMy3DRudderDirectInputApp();
 
-// Substitutions
+	// Overrides
 public:
 	virtual BOOL InitInstance();
 
-// Implémentation
+	// Implementation
 
 	DECLARE_MESSAGE_MAP()
 };

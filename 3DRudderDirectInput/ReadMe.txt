@@ -1,70 +1,132 @@
 ﻿================================================================================
-    BIBLIOTHÈQUE MFC (MICROSOFT FOUNDATION CLASS) : Vue d'ensemble du projet 3DRudderDirectInput
+    MICROSOFT FOUNDATION CLASS LIBRARY : 3DRudderDirectInput Project Overview
 ===============================================================================
 
-L'Assistant Application a créé cette application 3DRudderDirectInput pour vous. Cette application décrit non seulement les bases de l'utilisation de Microsoft Foundation Classes, mais est également un point de départ pour l'écriture de votre application.
+The application wizard has created this 3DRudderDirectInput application for
+you.  This application not only demonstrates the basics of using the Microsoft
+Foundation Classes but is also a starting point for writing your application.
 
-Ce fichier contient un résumé du contenu de chacun des fichiers qui constituent votre application 3DRudderDirectInput.
+This file contains a summary of what you will find in each of the files that
+make up your 3DRudderDirectInput application.
 
 3DRudderDirectInput.vcxproj
-    Il s'agit du fichier projet principal pour les projets VC++ générés à l'aide d'un Assistant Application. Il contient des informations sur la version de Visual C++ utilisée pour générer le fichier ainsi que des informations relatives aux plateformes, configurations et fonctionnalités du projet que vous avez sélectionnées dans l'Assistant Application.
+    This is the main project file for VC++ projects generated using an application wizard.
+    It contains information about the version of Visual C++ that generated the file, and
+    information about the platforms, configurations, and project features selected with the
+    application wizard.
 
 3DRudderDirectInput.vcxproj.filters
-    Il s'agit du fichier de filtres pour les projets VC++ générés à l'aide d'un Assistant Application. Il contient des informations sur l'association entre les fichiers de votre projet et les filtres. Cette association est utilisée dans l'IDE pour afficher le regroupement des fichiers qui ont des extensions similaires sous un nœud spécifique (par exemple, les fichiers ".cpp" sont associés au filtre "Fichiers sources").
+    This is the filters file for VC++ projects generated using an Application Wizard. 
+    It contains information about the assciation between the files in your project 
+    and the filters. This association is used in the IDE to show grouping of files with
+    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
+    "Source Files" filter).
 
 3DRudderDirectInput.h
-    Il s'agit du fichier d'en-tête principal pour l'application.
-    Il comprend d'autres en-têtes spécifiques au projet (notamment Resource.h) et déclare la classe d'application CMy3DRudderDirectInputApp.
+    This is the main header file for the application.  It includes other
+    project specific headers (including Resource.h) and declares the
+    CMy3DRudderDirectInputApp application class.
 
 3DRudderDirectInput.cpp
-    Il s'agit du fichier source principal de l'application qui contient la classe d'application CMy3DRudderDirectInputApp.
+    This is the main application source file that contains the application
+    class CMy3DRudderDirectInputApp.
 
 3DRudderDirectInput.rc
-    Il s'agit de la liste de toutes les ressources Microsoft Windows utilisées par le programme. Il inclut les icônes, les bitmaps et les curseurs qui sont stockés dans le sous-répertoire RES. Ce fichier peut être directement modifié dans Microsoft Visual C++. Les ressources de votre projet se trouvent dans 1036.
+    This is a listing of all of the Microsoft Windows resources that the
+    program uses.  It includes the icons, bitmaps, and cursors that are stored
+    in the RES subdirectory.  This file can be directly edited in Microsoft
+    Visual C++. Your project resources are in 1033.
 
 res\3DRudderDirectInput.ico
-    Il s'agit d'un fichier icône, qui est utilisé comme icône de l'application. Cette icône est incluse par le fichier de ressources principal 3DRudderDirectInput.rc.
+    This is an icon file, which is used as the application's icon.  This
+    icon is included by the main resource file 3DRudderDirectInput.rc.
 
 res\My3DRudderDirectInput.rc2
-    Ce fichier contient les ressources qui ne sont pas modifiées par Microsoft Visual C++. Vous devez placer toutes les ressources non modifiables par l'éditeur de ressources dans ce fichier.
+    This file contains resources that are not edited by Microsoft
+    Visual C++. You should place all resources not editable by
+    the resource editor in this file.
 
 
 /////////////////////////////////////////////////////////////////////////////
 
-L'Assistant Application crée une classe de boîte de dialogue :
+The application wizard creates one dialog class:
 
-3DRudderDirectInputDlg.h, 3DRudderDirectInputDlg.cpp - la boîte de dialogue
-    Ces fichiers contiennent votre classe CMy3DRudderDirectInputDlg. Cette classe définit le comportement de la boîte de dialogue principale de votre application. Le modèle de la boîte de dialogue se trouve dans 3DRudderDirectInput.rc, qui peut être modifié dans Microsoft Visual C++.
-
-/////////////////////////////////////////////////////////////////////////////
-
-Autres fonctionnalités :
-
-Contrôles ActiveX
-    L'application inclut la prise en charge pour l'utilisation des contrôles ActiveX.
-
-Prise en charge de l'impression et de l'aperçu avant impression
-    L'Assistant Application a généré le code pour gérer les commandes d'impression, de configuration de l'impression et d'aperçu avant impression en appelant les fonctions membres dans la classe CView à partir de la bibliothèque MFC.
+3DRudderDirectInputDlg.h, 3DRudderDirectInputDlg.cpp - the dialog
+    These files contain your CMy3DRudderDirectInputDlg class.  This class defines
+    the behavior of your application's main dialog.  The dialog's template is
+    in 3DRudderDirectInput.rc, which can be edited in Microsoft Visual C++.
 
 /////////////////////////////////////////////////////////////////////////////
 
-Autres fichiers standard :
+Help Support:
+
+hlp\My3DRudderDirectInput.hhp
+    This file is a help project file. It contains the data needed to
+    compile the help files into a .chm file.
+
+hlp\My3DRudderDirectInput.hhc
+    This file lists the contents of the help project.
+
+hlp\My3DRudderDirectInput.hhk
+    This file contains an index of the help topics.
+
+hlp\afxcore.htm
+    This file contains the standard help topics for standard MFC
+    commands and screen objects. Add your own help topics to this file.
+
+hlp\afxprint.htm
+    This file contains the help topics for the printing commands.
+
+makehtmlhelp.bat
+    This file is used by the build system to compile the help files.
+
+hlp\Images\*.gif
+    These are bitmap files required by the standard help file topics for
+    Microsoft Foundation Class Library standard commands.
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+Other Features:
+
+ActiveX Controls
+    The application includes support to use ActiveX controls.
+
+Printing and Print Preview support
+    The application wizard has generated code to handle the print, print setup, and print preview
+    commands by calling member functions in the CView class from the MFC library.
+
+/////////////////////////////////////////////////////////////////////////////
+
+Other standard files:
 
 StdAfx.h, StdAfx.cpp
-    Ces fichiers sont utilisés pour générer un fichier d'en-tête précompilé (PCH) 3DRudderDirectInput.pch et un fichier de type précompilé nommé StdAfx.obj.
+    These files are used to build a precompiled header (PCH) file
+    named 3DRudderDirectInput.pch and a precompiled types file named StdAfx.obj.
 
 Resource.h
-    Il s'agit du ficher d'en-tête standard, qui définit les nouveaux ID de ressources. Microsoft Visual C++ lit et met à jour ce fichier.
+    This is the standard header file, which defines new resource IDs.
+    Microsoft Visual C++ reads and updates this file.
 
 3DRudderDirectInput.manifest
-	Windows XP utilise les fichiers de manifeste d'application pour décrire la dépendance d'une application sur des versions spécifiques d'assemblys côte à côte. Le chargeur utilise ces informations pour charger l'assembly approprié à partir du cache d'assembly ou privé à partir de l'application. Le manifeste d'application peut être inclus pour une redistribution en tant que fichier .manifest installé dans le même dossier que l'exécutable de l'application. Il peut aussi être inclus dans l'exécutable sous la forme d'une ressource.
+	Application manifest files are used by Windows XP to describe an applications
+	dependency on specific versions of Side-by-Side assemblies. The loader uses this
+	information to load the appropriate assembly from the assembly cache or private
+	from the application. The Application manifest  maybe included for redistribution
+	as an external .manifest file that is installed in the same folder as the application
+	executable or it may be included in the executable in the form of a resource.
 /////////////////////////////////////////////////////////////////////////////
 
-Autres remarques :
+Other notes:
 
-L'Assistant Application utilise des commentaires "TODO:" pour indiquer les parties du code source où vous devrez ajouter ou modifier du code.
+The application wizard uses "TODO:" to indicate parts of the source code you
+should add to or customize.
 
-Si votre application utilise des MFC dans une DLL partagée, vous devez redistribuer les DLL MFC. Si la langue de votre application ne correspond pas aux paramètres régionaux du système d'exploitation, vous devrez également redistribuer les ressources localisées correspondantes mfc110XXX.DLL.
-Pour plus d'informations sur ces deux rubriques, consultez la section sur la redistribution des applications Visual C++ dans la documentation MSDN.
+If your application uses MFC in a shared DLL, you will need
+to redistribute the MFC DLLs. If your application is in a language
+other than the operating system's locale, you will also have to
+redistribute the corresponding localized resources MFC100XXX.DLL.
+For more information on both of these topics, please see the section on
+redistributing Visual C++ applications in MSDN documentation.
 
 /////////////////////////////////////////////////////////////////////////////

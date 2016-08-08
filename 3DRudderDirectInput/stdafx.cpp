@@ -1,7 +1,7 @@
 
-// stdafx.cpp : fichier source incluant simplement les fichiers Include standard
-// 3DRudderDirectInput.pch représente l'en-tête précompilé
-// stdafx.obj contient les informations de type précompilées
+// stdafx.cpp : source file that includes just the standard includes
+// 3DRudderDirectInput.pch will be the pre-compiled header
+// stdafx.obj will contain the pre-compiled type information
 
 #include "stdafx.h"
 

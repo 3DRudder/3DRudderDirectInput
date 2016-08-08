@@ -227,7 +227,7 @@ BOOL CALLBACK EnumJoysticksCallback(const DIDEVICEINSTANCE* pdidInstance,
 // Desc: Callback function for enumerating objects (axes, buttons, POVs) on a 
 //       joystick. This function enables user interface elements for objects
 //       that are found to exist, and scales axes min/max values.
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------     
 BOOL CALLBACK EnumObjectsCallback(const DIDEVICEOBJECTINSTANCE* pdidoi,
 	VOID* pContext)
 {
@@ -246,8 +246,14 @@ BOOL CALLBACK EnumObjectsCallback(const DIDEVICEOBJECTINSTANCE* pdidoi,
 		diprg.diph.dwHeaderSize = sizeof(DIPROPHEADER);
 		diprg.diph.dwHow = DIPH_BYID;
 		diprg.diph.dwObj = pdidoi->dwType; // Specify the enumerated axis
-		diprg.lMin = -1000;
+	//EFR 08/08/2016
+		/*diprg.lMin = -1000;
 		diprg.lMax = +1000;
+		*/
+
+		diprg.lMin = -32768;   // Codage sur 16bits
+		diprg.lMax = +32768;
+				
 
 		// Set the range for the axis
 		if (FAILED(pDlg->m_pJoystick->SetProperty(DIPROP_RANGE, &diprg.diph)))
@@ -341,6 +347,8 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 
 	// Poll the device to read the current state
 	hr = m_pJoystick->Poll();
+
+	
 	if (FAILED(hr))
 	{
 		// DInput is telling us that the input stream has been
@@ -357,6 +365,7 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 		return;
 	}
 
+
 	// Get the input's device state
 	if (FAILED(hr = m_pJoystick->GetDeviceState(sizeof(DIJOYSTATE2), &js)))
 		return ; // The device should have been acquired during the Poll()
@@ -364,11 +373,15 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 	// Display joystick state to dialog
 
 	m_sXAxis.Format(_T("%ld"), js.lX);
-	m_sYAxis.Format(_T("%ld"), js.lY);
+	// 08/08/2016 m_sYAxis.Format(_T("%ld"), js.lY);
+	m_sYAxis.Format(_T("%ld"), (js.lY*(-1)));
 	m_sZAxis.Format(_T("%ld"), js.lZ);
 	m_sZRotation.Format(_T("%ld"), js.lRz);
 
-	switch (js.lRx>>12)
+
+
+	// switch ((js.lRx)>>12)
+	switch ((js.lRx+1)>>12)  // EFR 08/08/2016
 	{
 		case 1:
 			m_sStatus = _T("Status : Don't put your Feet !!! Stay still 5s");
@@ -394,12 +407,24 @@ void CMy3DRudderDirectInputDlg::OnTimer(UINT_PTR nIDEvent)
 
 	}
 
+
+	
+
 	m_sSensor1.Format(_T("%ld"),js.lRy & 0xFF);
 	m_sSensor2.Format(_T("%ld"), ( js.lRy >> 8) & 0xFF);
+
+	/* EFR 08/08/2016 c'est l'inversion, on a d'abord les données des sesors 5 et 6
 	m_sSensor3.Format(_T("%ld"), js.rglSlider[0] & 0xFF);
 	m_sSensor4.Format(_T("%ld"), (js.rglSlider[0] >> 8) & 0xFF);
 	m_sSensor5.Format(_T("%ld"), js.rglSlider[1] & 0xFF);
 	m_sSensor6.Format(_T("%ld"), (js.rglSlider[1] >> 8) & 0xFF);
+	*/
+
+	m_sSensor3.Format(_T("%ld"), js.rglSlider[1] & 0xFF);
+	m_sSensor4.Format(_T("%ld"), (js.rglSlider[1] >> 8) & 0xFF);
+	m_sSensor5.Format(_T("%ld"), js.rglSlider[0] & 0xFF);
+	m_sSensor6.Format(_T("%ld"), (js.rglSlider[0] >> 8) & 0xFF);
+
 
 
 	UpdateData(FALSE);
